@@ -162,7 +162,6 @@ public class Postestpbopraktikum1 implements SuratCRUD {
         System.out.println("Mengupdate surat di Urutan " + (index + 1) + ":");
         bagiansurat surat = daftarSurat.get(index);
 
-        // Update fields yang umum untuk semua jenis surat
         System.out.print("Nama Tujuan (sebelumnya: " + surat.getNamaTujuan() + "): ");
         String namaTujuan = scanner.nextLine();
         System.out.print("NIK Tujuan (sebelumnya: " + surat.getNikTujuan() + "): ");
