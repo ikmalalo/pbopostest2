@@ -144,47 +144,58 @@ public class Postestpbopraktikum1 implements SuratCRUD {
     }
 
     @Override
-    public void updateSurat(int index, bagiansurat surat) {
+    public void updateSurat(int index, bagiansurat updatedSurat) {
         if (index >= 0 && index < daftarSurat.size()) {
-            daftarSurat.set(index, surat);
+            daftarSurat.set(index, updatedSurat);
+            System.out.println("Surat berhasil diupdate!");
         } else {
-            System.out.println("Indeks surat tidak valid.");
+            System.out.println("Urutan surat tidak valid.");
         }
     }
 
     private void updateSurat(Scanner scanner) {
-        
-        System.out.print("Masukkan angka urutan surat dari (1-" + daftarSurat.size() + "): ");
-        int index = scanner.nextInt() - 1; 
-        scanner.nextLine();
+    System.out.print("Masukkan angka urutan surat dari (1-" + daftarSurat.size() + "): ");
+    int index = scanner.nextInt() - 1;
+    scanner.nextLine();
 
-       
-        if (index >= 0 && index < daftarSurat.size()) {
-            System.out.println("Mengupdate surat di indeks " + (index + 1) + ":");
-            bagiansurat surat = daftarSurat.get(index);
+    if (index >= 0 && index < daftarSurat.size()) {
+        System.out.println("Mengupdate surat di Urutan " + (index + 1) + ":");
+        bagiansurat surat = daftarSurat.get(index);
 
-           
-            System.out.print("Nama Tujuan (sebelumnya: " + surat.getNamaTujuan() + "): ");
-            String namaTujuan = scanner.nextLine();
-            System.out.print("NIK Tujuan (sebelumnya: " + surat.getNikTujuan() + "): ");
-            String nikTujuan = scanner.nextLine();
-            System.out.print("No.HP (sebelumnya: " + surat.getNoHp() + "): ");
-            String noHp = scanner.nextLine();
-            System.out.print("Alamat Tujuan (sebelumnya: " + surat.getAlamatTujuan() + "): ");
-            String alamatTujuan = scanner.nextLine();
-            System.out.print("Email Tujuan (sebelumnya: " + surat.getEmailTujuan() + "): ");
-            String emailTujuan = scanner.nextLine();
-            System.out.print("Isi Surat (sebelumnya: " + surat.getIsiSurat() + "): ");
-            String isiSurat = scanner.nextLine();
+        // Update fields yang umum untuk semua jenis surat
+        System.out.print("Nama Tujuan (sebelumnya: " + surat.getNamaTujuan() + "): ");
+        String namaTujuan = scanner.nextLine();
+        System.out.print("NIK Tujuan (sebelumnya: " + surat.getNikTujuan() + "): ");
+        String nikTujuan = scanner.nextLine();
+        System.out.print("No.HP (sebelumnya: " + surat.getNoHp() + "): ");
+        String noHp = scanner.nextLine();
+        System.out.print("Alamat Tujuan (sebelumnya: " + surat.getAlamatTujuan() + "): ");
+        String alamatTujuan = scanner.nextLine();
+        System.out.print("Email Tujuan (sebelumnya: " + surat.getEmailTujuan() + "): ");
+        String emailTujuan = scanner.nextLine();
+        System.out.print("Isi Surat (sebelumnya: " + surat.getIsiSurat() + "): ");
+        String isiSurat = scanner.nextLine();
 
-            
-            bagiansurat updatedSurat = new bagiansuratresmi(namaTujuan, nikTujuan, noHp, alamatTujuan, emailTujuan, isiSurat, ((bagiansuratresmi) surat).getInstansiPengirim());
-            updateSurat(index, updatedSurat); // Memperbarui surat di daftar surat
-            System.out.println("Surat berhasil diupdate!");
+        bagiansurat updatedSurat;
+        if (surat instanceof bagiansuratresmi) {
+            System.out.print("Instansi Pengirim (sebelumnya: " + ((bagiansuratresmi) surat).getInstansiPengirim() + "): ");
+            String instansiPengirim = scanner.nextLine();
+            updatedSurat = new bagiansuratresmi(namaTujuan, nikTujuan, noHp, alamatTujuan, emailTujuan, isiSurat, instansiPengirim);
+        } else if (surat instanceof bagiansuratpribadi) {
+            System.out.print("Nama Pengirim (sebelumnya: " + ((bagiansuratpribadi) surat).getPengirim() + "): ");
+            String pengirim = scanner.nextLine();
+            updatedSurat = new bagiansuratpribadi(namaTujuan, nikTujuan, noHp, alamatTujuan, emailTujuan, isiSurat, pengirim);
         } else {
-            System.out.println("Indeks surat tidak valid.");
+            System.out.println("Tipe surat tidak dikenal.");
+            return;
         }
+        
+        updateSurat(index, updatedSurat);
+    } else {
+        System.out.println("urutan surat tidak valid.");
     }
+}
+
 
 
     @Override
@@ -192,12 +203,12 @@ public class Postestpbopraktikum1 implements SuratCRUD {
         if (index >= 0 && index < daftarSurat.size()) {
             daftarSurat.remove(index);
         } else {
-            System.out.println("Indeks surat tidak valid.");
+            System.out.println("Urutan surat tidak valid.");
         }
     }
 
     private void hapusSurat(Scanner scanner) {
-        System.out.print("Masukkan indeks surat yang ingin dihapus (0-" + (daftarSurat.size() - 1) + "): ");
+        System.out.print("Masukkan urutan surat yang ingin dihapus dari (1-" + (daftarSurat.size() - 1) + "): ");
         int index = scanner.nextInt();
         scanner.nextLine();
         hapusSurat(index);
