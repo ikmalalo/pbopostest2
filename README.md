@@ -21,12 +21,14 @@ Ikmal Ali Azhari, Sistem Informasi B, 2309116087
 
 # Opsi 4
 ![image](https://github.com/user-attachments/assets/b91ffef4-3a95-4c1a-95b0-26b7c5fec31d)
+
 ![image](https://github.com/user-attachments/assets/33864059-85d5-43bb-93f5-b974fcf86501)
 
 
 
 # Opsi 5
 ![image](https://github.com/user-attachments/assets/74821eed-6dc2-4c73-8e0c-0005a2188a99)
+
 ![image](https://github.com/user-attachments/assets/eb3ea06b-c0ec-484a-86b5-d729ab28e9a6)
 
 # Opsi 6
