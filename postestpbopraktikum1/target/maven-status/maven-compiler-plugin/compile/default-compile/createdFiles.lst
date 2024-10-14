@@ -1,0 +1,6 @@
+com\mycompany\postestpbopraktikum1\models\bagiansuratresmi.class
+com\mycompany\postestpbopraktikum1\models\bagianpengguna.class
+com\mycompany\postestpbopraktikum1\interfaces\SuratCRUD.class
+com\mycompany\postestpbopraktikum1\Postestpbopraktikum1.class
+com\mycompany\postestpbopraktikum1\models\bagiansurat.class
+com\mycompany\postestpbopraktikum1\models\bagiansuratpribadi.class
